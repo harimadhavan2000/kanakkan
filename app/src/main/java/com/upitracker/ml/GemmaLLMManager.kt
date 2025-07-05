@@ -12,8 +12,9 @@ class GemmaLLMManager(private val context: Context) {
     private var isInitialized = false
     
     companion object {
-        private const val MODEL_PATH = "gemma-2b-it-gpu-int4.bin"
-        private const val MAX_TOKENS = 512
+        // Updated to use Gemma 3N 2B model
+        private const val MODEL_PATH = "gemma-3n-2b-it-gpu-int4.bin"
+        private const val MAX_TOKENS = 1024 // Increased for better performance
         private const val TEMPERATURE = 0.7f
         private const val TOP_K = 40
         private const val RANDOM_SEED = 101
@@ -129,7 +130,7 @@ class GemmaLLMManager(private val context: Context) {
                 }
             } catch (e: Exception) {
                 // Model not in assets, will need to be downloaded
-                throw Exception("Model file not found. Please download the Gemma 2B model.")
+                throw Exception("Model file not found. Please download the Gemma 3N 2B model from Kaggle.")
             }
         }
         

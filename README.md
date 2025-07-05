@@ -1,12 +1,12 @@
 # UPI Transaction Tracker
 
-An Android app that automatically tracks UPI transactions from bank SMS notifications, categorizes them using on-device AI (Gemma 2B), and provides comprehensive reporting features.
+An Android app that automatically tracks UPI transactions from bank SMS notifications, categorizes them using on-device AI (Gemma 3N 2B), and provides comprehensive reporting features.
 
 ## Features
 
 - **Automatic Transaction Detection**: Uses NotificationListenerService to capture bank SMS notifications
-- **AI-Powered SMS Parsing**: Uses Gemma 2B LLM to intelligently parse transaction details from any SMS format
-- **AI-Powered Categorization**: On-device Gemma 2B LLM for automatic transaction categorization
+- **AI-Powered SMS Parsing**: Uses Gemma 3N 2B LLM to intelligently parse transaction details from any SMS format
+- **AI-Powered Categorization**: On-device Gemma 3N 2B LLM for automatic transaction categorization
 - **Manual Category Override**: Users can correct/change categories
 - **OCR Bill Scanning**: ML Kit integration for scanning and attaching receipts
 - **Comprehensive Search**: Full-text search across transactions
@@ -18,14 +18,14 @@ An Android app that automatically tracks UPI transactions from bank SMS notifica
 - **MVVM Pattern** with Repository layer
 - **Jetpack Compose** for modern UI
 - **Room Database** for local storage
-- **MediaPipe LLM API** for AI categorization
+- **MediaPipe LLM API** with Gemma 3N 2B for AI operations
 - **ML Kit** for OCR functionality
 
 ## Setup Instructions
 
 1. Clone the repository
 2. Open in Android Studio (Arctic Fox or later)
-3. Download the Gemma 2B model file (gemma-2b-it-gpu-int4.bin) from Kaggle
+3. Download the Gemma 3N 2B model file (gemma-3n-2b-it-gpu-int4.bin) from Kaggle
 4. Place the model file in `app/src/main/assets/`
 5. Build and run the app
 
@@ -37,14 +37,14 @@ An Android app that automatically tracks UPI transactions from bank SMS notifica
 ## Key Components
 
 ### LLM-Based Transaction Parser
-- Uses Gemma 2B to intelligently parse SMS messages
+- Uses Gemma 3N 2B to intelligently parse SMS messages
 - Understands context and handles any bank format
 - No need for bank-specific regex patterns
 - Extracts: amount, type (debit/credit), merchant, UPI ID, reference number
 - Handles typos, abbreviations, and mixed languages
 
 ### AI Categorizer
-- Uses Gemma 2B (4-bit quantized) for on-device inference
+- Uses Gemma 3N 2B (4-bit quantized) for on-device inference
 - Falls back to rule-based categorization
 - Learns from user feedback
 
@@ -62,7 +62,7 @@ An Android app that automatically tracks UPI transactions from bank SMS notifica
 ## Future Enhancements
 
 - Support for more languages
-- Gemma 2 integration when available
+- Multimodal capabilities when Gemma 3N multimodal is available
 - Cloud backup option
 - Budget alerts
 - Expense predictions

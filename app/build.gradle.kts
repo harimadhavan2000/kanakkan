@@ -81,7 +81,7 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.3.1")
     implementation("androidx.camera:camera-view:1.3.1")
     
-    // MediaPipe for LLM
+    // MediaPipe for LLM (Gemma 3N 2B)
     implementation("com.google.mediapipe:tasks-genai:0.10.14")
     
     // Chart library for reports
