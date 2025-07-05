@@ -5,7 +5,7 @@ An Android app that automatically tracks UPI transactions from bank SMS notifica
 ## Features
 
 - **Automatic Transaction Detection**: Uses NotificationListenerService to capture bank SMS notifications
-- **Smart Parsing**: Extracts transaction details (amount, merchant, UPI ID, reference number) using regex patterns
+- **AI-Powered SMS Parsing**: Uses Gemma 2B LLM to intelligently parse transaction details from any SMS format
 - **AI-Powered Categorization**: On-device Gemma 2B LLM for automatic transaction categorization
 - **Manual Category Override**: Users can correct/change categories
 - **OCR Bill Scanning**: ML Kit integration for scanning and attaching receipts
@@ -36,10 +36,12 @@ An Android app that automatically tracks UPI transactions from bank SMS notifica
 
 ## Key Components
 
-### Transaction Parser
-- Regex-based parsing for UPI transaction messages
-- Supports multiple bank formats
+### LLM-Based Transaction Parser
+- Uses Gemma 2B to intelligently parse SMS messages
+- Understands context and handles any bank format
+- No need for bank-specific regex patterns
 - Extracts: amount, type (debit/credit), merchant, UPI ID, reference number
+- Handles typos, abbreviations, and mixed languages
 
 ### AI Categorizer
 - Uses Gemma 2B (4-bit quantized) for on-device inference

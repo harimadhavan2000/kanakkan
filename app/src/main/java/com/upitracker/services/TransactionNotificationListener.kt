@@ -16,7 +16,7 @@ class TransactionNotificationListener : NotificationListenerService() {
     
     private val serviceScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private lateinit var database: TransactionDatabase
-    private val parser = TransactionParser()
+    private lateinit var parser: TransactionParser
     
     companion object {
         // Bank app package names
@@ -39,6 +39,7 @@ class TransactionNotificationListener : NotificationListenerService() {
     override fun onCreate() {
         super.onCreate()
         database = TransactionDatabase.getDatabase(this)
+        parser = TransactionParser(this)
     }
     
     override fun onNotificationPosted(sbn: StatusBarNotification) {

@@ -61,6 +61,19 @@ class GemmaLLMManager(private val context: Context) {
         }
     }
     
+    suspend fun parseTransactionMessage(prompt: String): String? = withContext(Dispatchers.Default) {
+        if (!isInitialized) {
+            initialize()
+        }
+        
+        return try {
+            llmInference?.generateResponse(prompt)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+    
     private fun buildCategorizationPrompt(
         transaction: String,
         merchant: String?,
