@@ -1,8 +1,8 @@
-# Gemma 3N 2B Model Information
+# Gemma 3N E2B Model Information
 
-## Why Gemma 3N 2B?
+## Why Gemma 3N E2B?
 
-Gemma 3N 2B is the latest iteration of Google's lightweight language model, specifically optimized for on-device inference with significant improvements over Gemma 2B.
+Gemma 3N E2B is Google's latest mobile-first language model, specifically designed for edge devices with revolutionary architecture improvements.
 
 ### Key Advantages
 
@@ -28,10 +28,12 @@ Gemma 3N 2B is the latest iteration of Google's lightweight language model, spec
 
 ## Model Specifications
 
-- **Model**: Gemma 3N 2B IT (Instruction Tuned)
+- **Model**: Gemma 3N E2B IT (Edge 2B Instruction Tuned)
+- **Format**: .task (LiteRT MediaPipe format)
+- **Architecture**: MatFormer with Per-Layer Embeddings (PLE)
 - **Quantization**: INT4 for optimal mobile performance
 - **Context Length**: Supports up to 8K tokens
-- **Size**: ~500MB (4-bit quantized)
+- **Size**: ~300MB (with PLE optimization)
 - **Hardware**: Runs on mid-range Android devices (Snapdragon 778+)
 
 ## Use Cases in UPI Tracker
@@ -66,10 +68,20 @@ Status: Awaiting multimodal release
 
 ## Download Instructions
 
-1. Visit Kaggle and search for "gemma-3n-2b-it-gpu-int4"
-2. Download the model file (~500MB)
+1. Visit Hugging Face: https://huggingface.co/google/gemma-3n-E2B-it-litert-preview
+2. Download the .task file (gemma-3n-E2B-it-int4.task)
 3. Place in `app/src/main/assets/`
-4. The app will handle initialization
+4. The app will load it directly from assets using MediaPipe
+
+## .task File Format
+
+The .task format is a compiled MediaPipe format that contains:
+- Pre-compiled model weights
+- Tokenizer configuration
+- Embeddings and encoders
+- All metadata needed for inference
+
+This format eliminates the need for model conversion and provides optimal performance on mobile devices.
 
 ## Future Roadmap
 

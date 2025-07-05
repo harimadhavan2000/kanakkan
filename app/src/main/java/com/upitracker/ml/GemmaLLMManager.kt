@@ -4,7 +4,6 @@ import android.content.Context
 import com.google.mediapipe.tasks.genai.llminference.LlmInference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.File
 
 class GemmaLLMManager(private val context: Context) {
     
@@ -12,8 +11,8 @@ class GemmaLLMManager(private val context: Context) {
     private var isInitialized = false
     
     companion object {
-        // Updated to use Gemma 3N 2B model
-        private const val MODEL_PATH = "gemma-3n-2b-it-gpu-int4.bin"
+        // Updated to use Gemma 3N E2B model with .task format
+        private const val MODEL_PATH = "gemma-3n-E2B-it-int4.task"
         private const val MAX_TOKENS = 1024 // Increased for better performance
         private const val TEMPERATURE = 0.7f
         private const val TOP_K = 40
@@ -24,10 +23,11 @@ class GemmaLLMManager(private val context: Context) {
         if (isInitialized) return@withContext
         
         try {
-            val modelPath = copyModelToInternalStorage()
+            // For .task files, we can load directly from assets
+            val modelAssetPath = "file:///android_asset/$MODEL_PATH"
             
             val options = LlmInference.LlmInferenceOptions.builder()
-                .setModelPath(modelPath)
+                .setModelPath(modelAssetPath)
                 .setMaxTokens(MAX_TOKENS)
                 .setTemperature(TEMPERATURE)
                 .setTopK(TOP_K)
@@ -116,26 +116,6 @@ class GemmaLLMManager(private val context: Context) {
         }
     }
     
-    private suspend fun copyModelToInternalStorage(): String = withContext(Dispatchers.IO) {
-        val modelFile = File(context.filesDir, MODEL_PATH)
-        
-        if (!modelFile.exists()) {
-            // In production, download from a secure source
-            // For now, assume the model is in assets
-            try {
-                context.assets.open(MODEL_PATH).use { input ->
-                    modelFile.outputStream().use { output ->
-                        input.copyTo(output)
-                    }
-                }
-            } catch (e: Exception) {
-                // Model not in assets, will need to be downloaded
-                throw Exception("Model file not found. Please download the Gemma 3N 2B model from Kaggle.")
-            }
-        }
-        
-        return modelFile.absolutePath
-    }
     
     fun release() {
         llmInference?.close()

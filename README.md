@@ -25,7 +25,7 @@ An Android app that automatically tracks UPI transactions from bank SMS notifica
 
 1. Clone the repository
 2. Open in Android Studio (Arctic Fox or later)
-3. Download the Gemma 3N 2B model file (gemma-3n-2b-it-gpu-int4.bin) from Kaggle
+3. Download the Gemma 3N E2B model file (gemma-3n-E2B-it-int4.task) from Hugging Face
 4. Place the model file in `app/src/main/assets/`
 5. Build and run the app
 
