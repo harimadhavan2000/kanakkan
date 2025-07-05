@@ -53,12 +53,12 @@ class GemmaLLMManager(private val context: Context) {
         
         val prompt = buildCategorizationPrompt(transaction, merchant, amount, availableCategories)
         
-        return try {
+        try {
             val response = llmInference?.generateResponse(prompt)
-            parseCategorizationResponse(response, availableCategories)
+            return@withContext parseCategorizationResponse(response, availableCategories)
         } catch (e: Exception) {
             e.printStackTrace()
-            null
+            return@withContext null
         }
     }
     
@@ -67,11 +67,11 @@ class GemmaLLMManager(private val context: Context) {
             initialize()
         }
         
-        return try {
-            llmInference?.generateResponse(prompt)
+        try {
+            return@withContext llmInference?.generateResponse(prompt)
         } catch (e: Exception) {
             e.printStackTrace()
-            null
+            return@withContext null
         }
     }
     

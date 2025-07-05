@@ -95,10 +95,10 @@ private fun CategoryItem(
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
                             imageVector = when(category.icon) {
-                                "restaurant" -> Icons.Default.Restaurant
+                                "restaurant" -> Icons.Default.Star
                                 "shopping_cart" -> Icons.Default.ShoppingCart
-                                "directions_car" -> Icons.Default.DirectionsCar
-                                else -> Icons.Default.Category
+                                "directions_car" -> Icons.Default.Place
+                                else -> Icons.Default.List
                             },
                             contentDescription = null,
                             tint = Color.White,

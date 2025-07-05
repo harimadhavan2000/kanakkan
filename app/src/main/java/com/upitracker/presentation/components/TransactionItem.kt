@@ -3,8 +3,8 @@ package com.upitracker.presentation.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDownward
-import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,9 +41,9 @@ fun TransactionItem(
                 // Transaction Type Icon
                 Icon(
                     imageVector = if (transaction.type == TransactionType.DEBIT) {
-                        Icons.Default.ArrowUpward
+                        Icons.Default.KeyboardArrowUp
                     } else {
-                        Icons.Default.ArrowDownward
+                        Icons.Default.KeyboardArrowDown
                     },
                     contentDescription = transaction.type.name,
                     tint = if (transaction.type == TransactionType.DEBIT) {

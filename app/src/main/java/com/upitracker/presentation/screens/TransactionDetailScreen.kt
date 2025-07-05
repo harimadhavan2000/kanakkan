@@ -144,7 +144,7 @@ fun TransactionDetailScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        Icons.Default.AttachFile,
+                        Icons.Default.Add,
                         contentDescription = "Attach",
                         tint = MaterialTheme.colorScheme.primary
                     )

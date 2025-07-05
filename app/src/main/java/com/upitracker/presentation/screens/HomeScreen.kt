@@ -45,10 +45,10 @@ fun HomeScreen(
                 title = { Text("UPI Tracker") },
                 actions = {
                     IconButton(onClick = { navController.navigate("categories") }) {
-                        Icon(Icons.Default.Category, contentDescription = "Categories")
+                        Icon(Icons.Default.List, contentDescription = "Categories")
                     }
                     IconButton(onClick = { navController.navigate("reports") }) {
-                        Icon(Icons.Default.Assessment, contentDescription = "Reports")
+                        Icon(Icons.Default.DateRange, contentDescription = "Reports")
                     }
                 }
             )
@@ -57,7 +57,7 @@ fun HomeScreen(
             FloatingActionButton(
                 onClick = { /* Open camera for bill scanning */ }
             ) {
-                Icon(Icons.Default.CameraAlt, contentDescription = "Scan Bill")
+                Icon(Icons.Default.Add, contentDescription = "Scan Bill")
             }
         }
     ) { paddingValues ->
